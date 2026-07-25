@@ -118,7 +118,7 @@ void printFibonacci(int n) {
     cout << endl;
 }
 
-// PART B: Check if a number belongs to the sequence iteratively
+
 bool isFibonacci(int num) {
     if (num == 0 || num == 1) {
         return true;

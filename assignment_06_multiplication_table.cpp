@@ -53,7 +53,71 @@
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
+// PART A: Print first N Fibonacci terms using an iterative loop
 
 #include <iostream>
 using namespace std;
+
+#include <iostream>
+using namespace std;
+
+// Function Prototypes
+void printSingleTable(int num);
+void printAllTables(int n);
+
+int main() {
+    int choice;
+
+    cout << "=== MULTIPLICATION TABLE GENERATOR ===" << endl;
+    cout << "1. Print Single Table" << endl;
+    cout << "2. Print Tables from 1 to N" << endl;
+    cout << "Enter your choice (1-2): ";
+    cin >> choice;
+
+    if (choice == 1) {
+        int num;
+        cout << "Enter a number: ";
+        cin >> num;
+
+        if (num <= 0) {
+            cout << "Error: Number must be a positive integer." << endl;
+        } else {
+            printSingleTable(num);
+        }
+
+    } else if (choice == 2) {
+        int n;
+        cout << "Enter N: ";
+        cin >> n;
+
+        if (n <= 0) {
+            cout << "Error: Number must be a positive integer." << endl;
+        } else {
+            printAllTables(n);
+        }
+
+    } else {
+        cout << "Invalid choice. Program terminating." << endl;
+    }
+
+    return 0;
+}
+
+
+void printSingleTable(int num) {
+    cout << "\nMultiplication Table for " << num << ":" << endl;
+    for (int i = 1; i <= 12; i++) {
+        cout << num << "  x  " << i << "  =  " << (num * i) << endl;
+    }
+}
+
+
+void printAllTables(int n) {
+    for (int i = 1; i <= n; i++) {
+        printSingleTable(i);
+        if (i < n) {
+            cout << "---------------------------" << endl;
+        }
+    }
+}
 
