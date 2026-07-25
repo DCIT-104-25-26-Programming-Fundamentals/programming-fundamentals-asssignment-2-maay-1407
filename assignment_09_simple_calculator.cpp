@@ -73,3 +73,93 @@
 #include <cmath>
 using namespace std;
 
+
+// Function Prototypes
+double addNumbers(double a, double b);
+double subtractNumbers(double a, double b);
+double multiplyNumbers(double a, double b);
+double divideNumbers(double a, double b);
+int modulusNumbers(int a, int b);
+double powerNumbers(double base, double exp);
+
+int main() {
+    int choice = 0;
+
+    while (choice != 7) {
+        cout << "\n============================" << endl;
+        cout << "     SIMPLE CALCULATOR      " << endl;
+        cout << "============================" << endl;
+        cout << "1. Addition" << endl;
+        cout << "2. Subtraction" << endl;
+        cout << "3. Multiplication" << endl;
+        cout << "4. Division" << endl;
+        cout << "5. Modulus" << endl;
+        cout << "6. Exponentiation" << endl;
+        cout << "7. Quit" << endl;
+        cout << "Select an operation (1-7): ";
+
+        if (!(cin >> choice)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter a choice between 1 and 7." << endl;
+            continue;
+        }
+
+        if (choice >= 1 && choice <= 6) {
+            double num1, num2;
+            
+            cout << "Enter first number : ";
+            while (!(cin >> num1)) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid input. Enter first number : ";
+            }
+
+            cout << "Enter second number: ";
+            while (!(cin >> num2)) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid input. Enter second number: ";
+            }
+
+            cout << fixed << setprecision(2);
+
+            if (choice == 1) {
+                cout << "Result: " << num1 << " + " << num2 << " = " << addNumbers(num1, num2) << endl;
+            } else if (choice == 2) {
+                cout << "Result: " << num1 << " - " << num2 << " = " << subtractNumbers(num1, num2) << endl;
+            } else if (choice == 3) {
+                cout << "Result: " << num1 << " * " << num2 << " = " << multiplyNumbers(num1, num2) << endl;
+            } else if (choice == 4) {
+                if (num2 == 0) {
+                    cout << "Error: Cannot divide by zero." << endl;
+                } else {
+                    cout << "Result: " << num1 << " / " << num2 << " = " << divideNumbers(num1, num2) << endl;
+                }
+            } else if (choice == 5) {
+                if (static_cast<int>(num2) == 0) {
+                    cout << "Error: Cannot divide by zero." << endl;
+                } else {
+                    int a = static_cast<int>(num1);
+                    int b = static_cast<int>(num2);
+                    cout << "Result: " << a << " % " << b << " = " << modulusNumbers(a, b) << endl;
+                }
+            } else if (choice == 6) {
+                cout << "Result: " << num1 << " ^ " << num2 << " = " << powerNumbers(num1, num2) << endl;
+            }
+        } else if (choice == 7) {
+            cout << "Goodbye!" << endl;
+        } else {
+            cout << "Invalid choice! Please enter a number between 1 and 7." << endl;
+        }
+    }
+
+    return 0;
+}
+
+double addNumbers(double a, double b) { return a + b; }
+double subtractNumbers(double a, double b) { return a - b; }
+double multiplyNumbers(double a, double b) { return a * b; }
+double divideNumbers(double a, double b) { return a / b; }
+int modulusNumbers(int a, int b) { return a % b; }
+double powerNumbers(double base, double exp) { return pow(base, exp); }
